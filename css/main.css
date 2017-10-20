@@ -1,0 +1,16 @@
+#title {
+    margin-top: 30px;
+}
+
+#chart-div {
+    margin-top: 60px;
+}
+
+.chart-area {
+    width: 50%;
+    float: left;
+}
+
+.chart {
+    min-height: 400px;
+}
