@@ -74,7 +74,7 @@ const optionTemplate = {
                 }
             }
         },
-        barMaxWidth: 45
+        barMaxWidth: 40
     }]
 };
 

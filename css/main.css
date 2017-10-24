@@ -16,8 +16,8 @@
     color: white;
     position: fixed;
     top: 0;
-    left: 382px;
-    right: 382px;
+    left: 320px;
+    right: 320px;
 }
 
 #title {
@@ -26,7 +26,7 @@
 }
 
 #count-area {
-    width: 500px;
+    width: 400px;
     margin: auto;
     margin-top: 10px;
     font-size: 30px;
@@ -46,6 +46,7 @@
 }
 
 .blue {
+    margin-top: 15px;
     background: linear-gradient(to bottom,  #9c9e9f 0%,#9c9e9f 50%,#33ccff 50%,#33ccff 100%);
 }
 
@@ -59,7 +60,7 @@
 }
 
 .chart {
-    width: 794px;
-    height: 630px;
-    margin: auto
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 70vh;
 }
