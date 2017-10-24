@@ -1,7 +1,7 @@
-var count;
+var count = 0;
 var browser = {};
 var os = {};
-var myColor = ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'];
+var myColor = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];
 // ['red','orange','yellow','green','cyan','blue','purple']
 
 const optionTemplate = {
@@ -105,7 +105,7 @@ function run() {
 function parseData(data) {
     browser = {};
     os = {};
-    count = data.value.length;
+    updateAllCount(data.value.length);
     var parser = new UAParser();
     for (user of data.value) {
         parser.setUA(user.UA);
@@ -114,6 +114,28 @@ function parseData(data) {
         var osName = result.os.name ? result.os.name : 'Unknown';
         addData(browser, browserName);
         addData(os, osName);
+    }
+}
+
+function updateAllCount(newCount) {
+    if (newCount !== count) {
+        count = newCount;
+        for (i = 0; i < 4; i++) {
+            updateCount(i);
+        }
+    }
+}
+
+function updateCount(index) {
+    var id = "#count" + index;
+    var divisor = 1;
+    for (i = 0; i < index; i++) {
+        divisor *= 10;
+    }
+    var newNumber = Math.floor(count / divisor) % 10;
+    var curNumber = parseInt($(id).text());
+    if (newNumber != curNumber) {
+        $(id).text(newNumber);
     }
 }
 
