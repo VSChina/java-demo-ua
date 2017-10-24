@@ -1,9 +1,21 @@
 var count;
 var browser = {};
 var os = {};
+var myColor = ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'];
+// ['red','orange','yellow','green','cyan','blue','purple']
 
 const optionTemplate = {
+    grid: {
+        left: 120,
+        right: 120,
+        top: 120
+    },
     backgroundColor: '#f6f6fa',
+    textStyle: {
+        color: '#1a237e',
+        fontFamily: 'Microsoft Yahei',
+        fontSize: 16
+    },
     title: {
         text: '',
         textStyle: {
@@ -12,24 +24,42 @@ const optionTemplate = {
             fontFamily: 'Microsoft Yahei',
             fontWeight: 'bold'
         },
-        top: 5,
-        left: 10
+        top: 20,
+        left: 50
     },
     tooltip: {},
     xAxis: {
-        data: []
+        data: [],
+        axisLine: {
+            lineStyle: {
+                color: '#1a237e',
+                width: 3
+            }
+        },
     },
-    yAxis: {},
+    yAxis: {
+        axisLine: {
+            lineStyle: {
+                color: '#1a237e',
+                width: 3
+            }
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#dadcea'
+            }
+        }
+    },
     series: [{
         name: '签到来源',
         type: 'bar',
         data: [],
         itemStyle: {
             normal: {
-                color: '#1a237e'
-            },
-            emphasis: {
-                color: '#ffa800'
+                color: function (params) {
+                    var num = myColor.length;
+                    return myColor[params.dataIndex % num]
+                }
             }
         },
         label: {
@@ -37,16 +67,14 @@ const optionTemplate = {
                 show: true,
                 position: 'top',
                 textStyle: {
-                    color: "#1a237e"
-                }
-            },
-            emphasis: {
-                textStyle: {
-                    color: "#ffa800"
+                    color: function (params) {
+                        var num = myColor.length;
+                        return myColor[params.dataIndex % num]
+                    }
                 }
             }
         },
-        barMaxWidth: 50
+        barMaxWidth: 45
     }]
 };
 
