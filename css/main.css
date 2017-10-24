@@ -1,9 +1,56 @@
+#header-bar {
+    height: 80px;
+    background-color: #1a237e;
+    opacity: 0.6;
+}
+
+#title-div {
+    height: 160px;
+    border-style: solid;
+    border-top-style: none;
+    border-width: 18px;
+    border-color: rgba(26, 35, 122, .2);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+    background-color: #1a237e;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 382px;
+    right: 382px;
+}
+
 #title {
-    margin-top: 30px;
+    margin-top: 15px;
+    margin-left: 30px;
+}
+
+#count-area {
+    width: 500px;
+    margin: auto;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.count {
+    float: left;
+    font-size: 40px;
+    width: 40px;
+    height: 60px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.yellow {
+    background: linear-gradient(to bottom,  #ec9c02 0%,#ec9c02 50%,#ffb300 50%,#ffb300 100%);
+}
+
+.blue {
+    background: linear-gradient(to bottom,  #9c9e9f 0%,#9c9e9f 50%,#33ccff 50%,#33ccff 100%);
 }
 
 #chart-div {
-    margin-top: 60px;
+    margin-top: 140px;
 }
 
 .chart-area {
