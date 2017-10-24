@@ -1,34 +1,52 @@
 var count;
 var browser = {};
 var os = {};
+
 const optionTemplate = {
+    backgroundColor: '#f6f6fa',
     title: {
         text: '',
-        subtext: '',
-        x: 'center'
+        textStyle: {
+            color: '#1a237e',
+            fontSize: 30,
+            fontFamily: 'Microsoft Yahei',
+            fontWeight: 'bold'
+        },
+        top: 5,
+        left: 10
     },
-    tooltip: {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
-        orient: 'vertical',
-        left: 'left',
+    tooltip: {},
+    xAxis: {
         data: []
     },
+    yAxis: {},
     series: [{
-        name: '访问来源',
-        type: 'pie',
-        radius: '55%',
-        center: ['50%', '60%'],
+        name: '签到来源',
+        type: 'bar',
         data: [],
         itemStyle: {
+            normal: {
+                color: '#1a237e'
+            },
             emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                color: '#ffa800'
             }
-        }
+        },
+        label: {
+            normal: {
+                show: true,
+                position: 'top',
+                textStyle: {
+                    color: "#1a237e"
+                }
+            },
+            emphasis: {
+                textStyle: {
+                    color: "#ffa800"
+                }
+            }
+        },
+        barMaxWidth: 50
     }]
 };
 
@@ -37,26 +55,24 @@ run();
 function run() {
     console.log('run');
     $.ajax({
-        method: "GET",
-        url: "https://demo4java.table.core.windows.net/user?sv=2016-05-31&ss=bfqt&srt=sco&sp=rwdlacup&st=2017-10-19T07%3A29%3A00Z&se=2018-11-21T07%3A29%3A00Z&sig=q5Jt6J7Ny4qBW0YllLt%2BMtibBWIwS0fmhcNM%2FH%2BqDrY%3D",
-        headers: {
-            'Accept': 'application/json;odata=nometadata'
-        }
-    })
-    .done(function (data) {
-        console.log(data);
-        parseData(data);
-        $("#count").text(data.value.length);
-        draw(data);
-    })
-    .always(function () {
-        setTimeout(()=>{
-            run();
-        }, 1000);
-    });
+            method: "GET",
+            url: "https://demo4java.table.core.windows.net/user?sv=2016-05-31&ss=bfqt&srt=sco&sp=rwdlacup&st=2017-10-19T07%3A29%3A00Z&se=2018-11-21T07%3A29%3A00Z&sig=q5Jt6J7Ny4qBW0YllLt%2BMtibBWIwS0fmhcNM%2FH%2BqDrY%3D",
+            headers: {
+                'Accept': 'application/json;odata=nometadata'
+            }
+        })
+        .done(function (data) {
+            console.log(data);
+            parseData(data);
+            $("#count").text(data.value.length);
+            draw(data);
+        })
+        .always(function () {
+            setTimeout(() => {
+                run();
+            }, 1000);
+        });
 }
-
-
 
 function parseData(data) {
     browser = {};
@@ -93,7 +109,7 @@ function drawChart(map, id, text) {
 
     var option = Object.assign({}, optionTemplate);
     option.title.text = text;
-    option.legend.data = chartData.keys;
+    option.xAxis.data = chartData.keys;
     option.series[0].data = chartData.data;
 
     myChart.setOption(option);
@@ -101,14 +117,10 @@ function drawChart(map, id, text) {
 
 function getChartData(map) {
     var data = [];
-    var keys = [];
+    var keys = Object.keys(map).sort();
 
-    for (key in map) {
-        data.push({
-            value: map[key],
-            name: key
-        });
-        keys.push(key);
+    for (key of keys) {
+        data.push(map[key]);
     }
 
     return {

@@ -12,5 +12,7 @@
 }
 
 .chart {
-    min-height: 400px;
+    width: 794px;
+    height: 630px;
+    margin: auto
 }
