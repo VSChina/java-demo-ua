@@ -80,6 +80,13 @@ const optionTemplate = {
 
 run();
 
+$(window).on('resize', function () {
+    $(".chart").each(function () {
+        var id = $(this).attr('_echarts_instance_');
+        window.echarts.getInstanceById(id).resize();
+    });
+});
+
 function run() {
     console.log('run');
     $.ajax({
