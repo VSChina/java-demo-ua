@@ -14,7 +14,7 @@
     background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
     background-color: #1a237e;
     color: white;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 320px;
     right: 320px;
