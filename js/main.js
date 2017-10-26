@@ -8,7 +8,8 @@ const optionTemplate = {
     grid: {
         left: 120,
         right: 120,
-        top: 120
+        top: 120,
+        bottom: 100
     },
     backgroundColor: '#f6f6fa',
     textStyle: {
@@ -36,6 +37,10 @@ const optionTemplate = {
                 width: 3
             }
         },
+        axisLabel: {
+            interval: 0,
+            rotate: 30
+        }
     },
     yAxis: {
         axisLine: {
